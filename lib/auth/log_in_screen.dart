@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:the_noire_hub/utils/app_colors.dart';
+import 'package:the_noire_hub/widget/Custom_Elevated_Button.dart';
 import 'controller/log_in_screen_controller.dart';
 import 'package:the_noire_hub/widget/social_button.dart';
 
@@ -53,7 +54,7 @@ class LogInScreen extends StatelessWidget {
           Align(
             alignment: Alignment.bottomCenter,
             child: Container(
-              height: screenHeight * 0.68,
+              height: screenHeight * 0.69,
               width: screenWidth,
               decoration: BoxDecoration(
                 color: Colors.white,
@@ -68,20 +69,7 @@ class LogInScreen extends StatelessWidget {
               ),
               child: Column(
                 children: [
-                  // Drag handle
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: Center(
-                      child: Container(
-                        width: 40,
-                        height: 4,
-                        decoration: BoxDecoration(
-                          color: Colors.grey.shade300,
-                          borderRadius: BorderRadius.circular(2),
-                        ),
-                      ),
-                    ),
-                  ),
+                  SizedBox(height: 10,),
                   // Scrollable content
                   Expanded(
                     child: SingleChildScrollView(
@@ -97,36 +85,49 @@ class LogInScreen extends StatelessWidget {
                                 'Sign in to TNP',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                  fontSize: 24,
+                                  fontSize: 20,
                                   fontFamily: 'Inter',
                                   fontWeight: FontWeight.w800,
                                 ),
                               ),
                               const SizedBox(height: 30),
-                              const Text('Email', style: TextStyle(fontSize: 14)),
-                              const SizedBox(height: 8),
                               TextField(
                                 controller: controller.emailController,
                                 decoration: InputDecoration(
-                                  hintText: 'Enter your email',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
+                                  hintText: 'Email',
+                                  border: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: AppColors.blackColor,
+                                    ),
                                   ),
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                  contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                                  hintStyle: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.blackColor, // Set hint text color
+                                  ),
                                 ),
                               ),
                               const SizedBox(height: 20),
-                              const Text('Password', style: TextStyle(fontSize: 14)),
-                              const SizedBox(height: 8),
                               TextField(
                                 controller: controller.passwordController,
                                 obscureText: true,
                                 decoration: InputDecoration(
-                                  hintText: 'Enter your password',
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(8),
+                                  hintText: 'Password',
+                                  border: UnderlineInputBorder(
+                                    borderSide: BorderSide(
+                                      color: AppColors.blackColor,
+                                    ),
                                   ),
-                                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
+                                  contentPadding: const EdgeInsets.symmetric(vertical: 8),
+                                  hintStyle: TextStyle(
+                                    fontFamily: 'Inter',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.blackColor, // Set hint text color
+                                ),
+
                                 ),
                               ),
                               const SizedBox(height: 15),
@@ -162,20 +163,32 @@ class LogInScreen extends StatelessWidget {
                                 ],
                               ),
                               const SizedBox(height: 20),
-                              ElevatedButton(
-                                onPressed: controller.isLoading.value ? null : controller.signIn,
-                                child: controller.isLoading.value
-                                    ? const SizedBox(
-                                  width: 20,
-                                  height: 20,
-                                  child: CircularProgressIndicator(strokeWidth: 2, color: Colors.white),
-                                )
-                                    : const Text('Sign in'),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 40,right: 40),
+                                child: CustomElevatedButton(
+                                  height: 50,
+                                    width: 30,
+                                    borderRadius: BorderRadius.circular(15),
+                                    onPressed: (){},
+                                    buttonText: "Sign in",
+                                  textStyle: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.whiteColor, // Set hint text color
+                                  ),
+                                  backgroundColor: AppColors.primaryColor,
+                                ),
                               ),
                               const SizedBox(height: 10),
                               TextButton(
                                 onPressed: controller.createAccount,
-                                child: const Text('Create Account'),
+                                child: const Text('Create Account',style: TextStyle(
+                                  fontFamily: 'Inter',
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w600,
+                                  color: AppColors.blackColor, // Set hint text color
+                                ),),
                               ),
                               const SizedBox(height: 15),
                               buildSocialButton(
