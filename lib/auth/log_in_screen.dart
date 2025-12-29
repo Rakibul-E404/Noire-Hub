@@ -183,13 +183,23 @@ class LogInScreen extends StatelessWidget {
                               const SizedBox(height: 10),
                               TextButton(
                                 onPressed: controller.createAccount,
-                                child: const Text('Create Account',style: TextStyle(
-                                  fontFamily: 'Inter',
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.w600,
-                                  color: AppColors.blackColor, // Set hint text color
-                                ),),
+                                style: TextButton.styleFrom(
+                                  splashFactory: NoSplash.splashFactory,
+                                  padding: EdgeInsets.zero,
+                                ),
+                                child: const Text(
+                                  'Create Account',
+                                  style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w600,
+                                    color: AppColors.blackColor,
+                                  ),
+                                ),
                               ),
+
+
+
                               const SizedBox(height: 15),
                               buildSocialButton(
                                 imageIconPath: 'assets/images/google_icon_image.png',
